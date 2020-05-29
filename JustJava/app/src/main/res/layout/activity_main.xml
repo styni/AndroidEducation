@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:textSize="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <TextView
+        style="@style/HeaderTextStyle"
+        android:text="toppings"
+        android:layout_margin="16dp"/>
+
+    <CheckBox
+        android:id="@+id/whipped_cream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped cream"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:paddingLeft="24dp"/>
+
+    <CheckBox
+        android:id="@+id/chocolate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chocolate"
+        android:textSize="16dp"
+        android:paddingLeft="24dp"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        style="@style/HeaderTextStyle"
+        android:id="@+id/text_quantity"
+        android:layout_margin="16dp"
+        android:text="Quantity" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp">
+
+        <Button
+            android:id="@+id/minus_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:textSize="20sp"
+            android:onClick="minusCount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="30dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/quantity_text_view"/>
+
+        <Button
+            android:id="@+id/plus_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:textSize="20sp"
+            android:onClick="plusCount"/>
+    </LinearLayout>
+
+    <TextView
+        style="@style/HeaderTextStyle"
+        android:text="order summury"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/text_prise" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_quantity"
+        android:text="Order"
+        android:layout_margin="10dp"
+        android:onClick="displayPrice"/>
+</LinearLayout>
