@@ -11,7 +11,7 @@ public class RequestManager {
     private static int CONNECTION_TIMEOUT = 1000;
     private static int HTTP_WARNING = 461;
 
-    public static String getResponseFromURL(URL url) throws IOException {
+    public static String getResponse(URL url) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("GET");
@@ -38,5 +38,35 @@ public class RequestManager {
             connection.disconnect();
         }
 
+    }
+
+    public static String postResponse(URL url) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setConnectTimeout(CONNECTION_TIMEOUT);
+        connection.setReadTimeout(CONNECTION_TIMEOUT);
+        connection.setDoOutput(true);
+        connection.setDoInput(true);
+
+        try {
+
+            final StringBuilder content = new StringBuilder();
+            if (HttpURLConnection.HTTP_OK == connection.getResponseCode()) {
+                content.append("Success\n");
+            } else if (HttpURLConnection.HTTP_INTERNAL_ERROR == connection.getResponseCode()) {
+                content.append("Error\n");
+            } else if (HttpURLConnection.HTTP_UNAUTHORIZED == connection.getResponseCode() || HTTP_WARNING == connection.getResponseCode()) {
+                content.append("Warning\n");
+            }
+
+            return content.toString();
+        } catch (final Exception ex) {
+            ex.printStackTrace();
+            return "";
+        } finally {
+            connection.disconnect();
+        }
     }
 }
