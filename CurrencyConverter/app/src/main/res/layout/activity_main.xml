@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".app.View.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin"
+        android:text="@string/tv_input_currency"
+        android:textSize="16sp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/horizontal_margin"
+        android:orientation="horizontal">
+
+
+        <Spinner
+            android:id="@+id/s_input_currency"
+            android:layout_width="@dimen/list_box_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:entries="@array/currency"
+            />
+
+        <EditText
+            android:id="@+id/et_input_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="end"
+            android:inputType="number"
+            android:maxWidth="128dp"
+            android:minWidth="64dp"
+            android:importantForAutofill="no"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/horizontal_margin"
+        android:text="@string/tv_output_currency"
+        android:textSize="16sp"
+        android:labelFor="@id/et_output_currency"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/horizontal_margin"
+        android:orientation="horizontal">
+
+
+        <Spinner
+            android:id="@+id/s_output_currency"
+            android:layout_width="@dimen/list_box_width"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:gravity="center_vertical"
+            android:entries="@array/currency"/>
+
+        <TextView
+            android:id="@+id/et_output_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="end"
+            android:foregroundGravity="center_vertical"
+
+            android:maxWidth="128dp"
+            android:minWidth="64dp"
+            android:importantForAutofill="no"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:onClick="clickConvert"
+        android:text="@string/apply"/>
+
+
+
+</LinearLayout>
