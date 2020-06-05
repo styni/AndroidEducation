@@ -64,4 +64,9 @@ class MainActivity : AppCompatActivity(), CurrencyContract.View {
         Toast.makeText(this, getString(R.string.field_is_empty), Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
 }

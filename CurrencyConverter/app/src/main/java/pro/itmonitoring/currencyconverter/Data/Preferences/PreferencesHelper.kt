@@ -14,11 +14,11 @@ class PreferencesHelper(private val context: Context) {
     private var editor: SharedPreferences.Editor = sPref.edit()
 
     fun saveCurrency(cur: Map<String, Double>) {
-        var set: Set<String> = mutableSetOf()
+        var setCur: MutableSet<String> = mutableSetOf()
         for(i in cur) {
-            set.plus("${i.key}:${i.value}")
+            setCur?.add("${i.key}:${i.value}")
         }
-        editor.putStringSet(KEY_CUR, set)
+        editor.putStringSet(KEY_CUR, setCur)
         editor.apply()
     }
 
@@ -28,11 +28,11 @@ class PreferencesHelper(private val context: Context) {
         if (cur != null) {
             for (i in cur) {
                 var temp = i.split(":")
-                Log.d("DFDF", temp[0] + temp[1])
                 map?.set(temp[0], temp[1].toDouble())
             }
             return map
         }
+        Log.d("MAP NULL", map?.size.toString())
         return null
     }
 }

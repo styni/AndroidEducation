@@ -17,10 +17,11 @@ interface CurrencyContract {
         fun getCurrencyResponse()
         fun getCurrencyLocal()
         fun convert(count: String, from: String, to: String)
+        fun onDestroy()
     }
 
     interface Repository {
-        fun getDataRequest()
+        fun getDataRequest(): Disposable
         fun getDataLocal()
         fun convert(count: String, from: String, to: String): String
     }

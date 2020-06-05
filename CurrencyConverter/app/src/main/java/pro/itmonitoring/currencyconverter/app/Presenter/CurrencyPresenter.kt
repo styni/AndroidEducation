@@ -9,13 +9,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import io.reactivex.disposables.CompositeDisposable
+import pro.itmonitoring.currencyconverter.Data.Model.ValCurs
 import pro.itmonitoring.currencyconverter.app.CurrencyContract
 import java.io.IOException
 import java.net.MalformedURLException
+import java.util.*
 
 class CurrencyPresenter (
     private val view: CurrencyContract.View,
     private val repository: CurrencyContract.Repository) : CurrencyContract.Presenter {
+    private val disposable = CompositeDisposable()
 
     override fun getCurrency(hasNetwork: Boolean) {
         if (hasNetwork) {
@@ -26,7 +29,7 @@ class CurrencyPresenter (
     }
 
     override fun getCurrencyResponse() {
-        repository.getDataRequest()
+        disposable.add(repository.getDataRequest())
     }
 
     override fun getCurrencyLocal() {
@@ -42,5 +45,12 @@ class CurrencyPresenter (
         val result: String = repository.convert(count, from, to)
         view.showResult(result)
     }
+
+    override fun onDestroy() {
+        if (!disposable.isDisposed) {
+            disposable.dispose()
+        }
+    }
+
 
 }

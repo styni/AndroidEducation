@@ -20,20 +20,20 @@ class CurrencyRepository(private var preferences: PreferencesHelper) : CurrencyC
 
 
     @SuppressLint("CheckResult")
-    override fun getDataRequest() {
+    override fun getDataRequest(): Disposable {
         val request = RequestClient
             .create()
             .getCurrency()
 
-        request
+        return request
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({ result ->
+            .subscribe({ result ->
                 rates = valToMap(result)
                 preferences.saveCurrency(rates!!)
                 Log.d("CURR_RES", result.toString())
             }, { error ->
-                Log.d("ERRORS", error.message)
+                Log.d("ERRORS", error.message!!)
             })
 
     }
